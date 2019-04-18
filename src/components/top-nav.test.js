@@ -10,7 +10,8 @@ describe('<TopNav />', () => {
 
   it('Should call onNewGame when new game is clicked', () => {
     const dispatch = jest.fn();
-    const wrapper = shallow(<TopNav onRestartGame={callback} />);
+    
+    const wrapper = shallow(<TopNav dispatch={dispatch} />);
     const link = wrapper.find('.new');
     link.simulate('click', {
       preventDefault() {}
@@ -20,11 +21,12 @@ describe('<TopNav />', () => {
 
   it('Should call onGenerateAuralUpdate when state-of-game link is clicked', () => {
     const callback = jest.fn();
-    const wrapper = shallow(<TopNav onGenerateAuralUpdate={callback} />);
+
+    const wrapper = shallow(<TopNav dispatch={callback} />);
     const link = wrapper.find('.status-link');
     link.simulate('click', {
       preventDefault() {}
     });
-    expect(dispatch).toHaveBeenCalled();
+    expect(callback).toHaveBeenCalled();
   });
 });

@@ -20,15 +20,14 @@ describe('reducer', () => {
 
   // Test failing because the correct answer is updating each run. its alive.
   it('should set the initial state when nothing is passed in', () => {
-    let state = {
-      guesses: [],
-      feedback: 'Make your guess!',
-      auralStatus: '',
-      correctAnswer: Number // this number updates. crazy
-    };
+    
   
-    state = reducer(undefined, {type: '__UNKNOWN'});
-    expect(state).toEqual(defaultState)
+    let state = reducer(undefined, {type: '__UNKNOWN'});
+    expect(state.guesses).toEqual(defaultState.guesses)
+    expect(state.feedback).toEqual(defaultState.feedback)
+    expect(state.auralStatus).toEqual(defaultState.auralStatus)
+    expect(state.correctAnswer).toBeGreaterThanOrEqual(1)
+    expect(state.correctAnswer).toBeLessThanOrEqual(100)
   })
 
 
