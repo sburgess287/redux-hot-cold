@@ -30,19 +30,28 @@ describe('reducer', () => {
     expect(state.correctAnswer).toBeLessThanOrEqual(100)
   })
 
+  it('Should return the current state on an unknown action', () => {
+    let currentState = {};
+    const state = reducer(currentState, {type: '__UNKNOWN'});
+    expect(state).toBe(currentState);
+  });
+
 
   // restart game tests
   describe('restart game should reset game', () => {
-    let state;
-    let currentState = {
-      guesses: [],
-      feedback: 'Make your guess!',
-      auralStatus: '',
-      correctAnswer: undefined
-
+    let state = {
+      guesses: [1, 2, 3, 4],
+      feedback: 'Awesome',
+      correctAnswer: 4
     };
-    state = reducer(state, restartGame());
-    expect(state).toEqual(currentState);
+
+    const correctAnswer = 10
+    state = reducer(state, restartGame(correctAnswer));
+  
+    expect(state.guesses).toEqual([]);
+    expect(state.feedback).toEqual('Make your guess!')
+    expect(state.auralStatus).toEqual('')
+    expect(state.correctAnswer).toEqual(correctAnswer);
     
   })
 
