@@ -20,7 +20,7 @@
     "macaddress": "^0.2.9",
     "merge": "^1.2.1",
     "react": "^16.1.1",
-    "react-dev-utils": "^9.0.1",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
